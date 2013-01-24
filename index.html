@@ -22,8 +22,8 @@
     <script type="text/x-handlebars" data-template-name="new-gift">
       <h4>New Wish</h4>
 
-      <label>Name</label>
-      {{view Ember.TextField valueBinding="name" placeholder="e.g., NERF gun"}}
+      <label {{bindAttr for="view.nameField.elementId"}}>Name</label>
+      {{view Ember.TextField valueBinding="name" viewName="nameField" placeholder="e.g., NERF gun"}}
 
       <div>
         <input type="button" value="Add" class="btn btn-primary" {{action add}}>
