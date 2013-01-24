@@ -50,7 +50,19 @@ App.NewGiftController = Em.ObjectController.extend({
 
   reset: function () {
     this.set('content', App.Gift.create())
-  }
+  },
+
+  price: function (key, priceStr) {
+    if (arguments.length > 1) {
+      // setter
+      var parsedPrice = parseFloat(priceStr),
+          price       = isNaN(parsedPrice) ? null : parsedPrice;
+
+      this.set('content.price', price);
+    }
+
+    return this.get('content.price');
+  }.property('content.price')
 });
 
 App.NewGiftView = Em.View.extend({
