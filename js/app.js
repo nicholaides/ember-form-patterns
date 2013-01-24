@@ -53,3 +53,7 @@ App.NewGiftController = Em.ObjectController.extend({
 App.NewGiftView = Em.View.extend({
   templateName: 'new-gift'
 });
+
+Em.TextField.reopen({
+  attributeBindings: ["required"]
+});
