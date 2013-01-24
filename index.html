@@ -32,6 +32,13 @@
             required="required"
         }}
 
+        <label {{bindAttr for="view.priceField.elementId"}}>Price</label>
+        {{view Ember.TextField
+            valueBinding="price"
+            viewName="priceField"
+            placeholder="e.g., 0.50"
+        }}
+
         <div>
           <input type="reset" value="Cancel" class="btn btn-link">
           <input type="submit" value="Add" class="btn btn-primary">
@@ -46,6 +53,9 @@
         {{#each this}}
           <li>
             {{name}}
+            {{#if price}}
+              (${{price}})
+            {{/if}}
           </li>
         {{/each}}
       </ul>

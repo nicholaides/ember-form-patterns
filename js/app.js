@@ -7,8 +7,8 @@ App.Router.map(function() {
 App.GiftsRoute = Ember.Route.extend({
   setupController: function(controller, model) {
     controller.set('content', [
-      { name: "Transformers" },
-      { name: "Barbie"       },
+      { name: "Transformers", price: 30.00 },
+      { name: "Barbie",       price: 49.99 },
     ]);
   },
   renderTemplate: function(){
@@ -30,7 +30,10 @@ App.GiftsRoute = Ember.Route.extend({
 
 App.Gift = Em.Object;
 
-App.GiftsController = Em.ArrayController;
+App.GiftsController = Em.ArrayController.extend({
+  sortProperties: ['price'],
+  sortAscending: false
+});
 
 App.NewGiftController = Em.ObjectController.extend({
   collection: null,
