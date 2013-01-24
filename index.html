@@ -20,19 +20,23 @@
     </script>
 
     <script type="text/x-handlebars" data-template-name="new-gift">
-      <h4>New Wish</h4>
+      <form {{action add on="submit"}}>
 
-      <label {{bindAttr for="view.nameField.elementId"}}>Name</label>
-      {{view Ember.TextField
-          valueBinding="name"
-          viewName="nameField"
-          placeholder="e.g., NERF gun"
-          required="required"
-      }}
+        <h4>New Wish</h4>
 
-      <div>
-        <input type="button" value="Add" class="btn btn-primary" {{action add}}>
-      </div>
+        <label {{bindAttr for="view.nameField.elementId"}}>Name</label>
+        {{view Ember.TextField
+            valueBinding="name"
+            viewName="nameField"
+            placeholder="e.g., NERF gun"
+            required="required"
+        }}
+
+        <div>
+          <input type="submit" value="Add" class="btn btn-primary">
+        </div>
+
+      </form>
     </script>
 
     <script type="text/x-handlebars" data-template-name="gifts">
