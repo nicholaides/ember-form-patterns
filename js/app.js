@@ -1,4 +1,5 @@
 App = Em.Application.create();
+App.Store = DS.Store.extend({revision: 11});
 
 App.Router.map(function() {
   this.route("gifts", { path: "/" });
@@ -7,8 +8,8 @@ App.Router.map(function() {
 App.GiftsRoute = Ember.Route.extend({
   setupController: function(controller, model) {
     controller.set('content', [
-      { name: "Transformers", price: 30.00 },
-      { name: "Barbie",       price: 49.99 },
+      App.Gift.createRecord({ name: "Transformers", price: 30.00 }),
+      App.Gift.createRecord({ name: "Barbie",       price: 49.99 }),
     ]);
   },
   renderTemplate: function(){
@@ -28,7 +29,10 @@ App.GiftsRoute = Ember.Route.extend({
   }
 });
 
-App.Gift = Em.Object;
+App.Gift = DS.Model.extend({
+  name:  DS.attr('string'),
+  price: DS.attr('number')
+});
 
 App.GiftsController = Em.ArrayController.extend({
   sortProperties: ['price'],
@@ -49,20 +53,8 @@ App.NewGiftController = Em.ObjectController.extend({
   },
 
   reset: function () {
-    this.set('content', App.Gift.create())
+    this.set('content', App.Gift.createRecord())
   },
-
-  price: function (key, priceStr) {
-    if (arguments.length > 1) {
-      // setter
-      var parsedPrice = parseFloat(priceStr),
-          price       = isNaN(parsedPrice) ? null : parsedPrice;
-
-      this.set('content.price', price);
-    }
-
-    return this.get('content.price');
-  }.property('content.price')
 });
 
 App.NewGiftView = Em.View.extend({
