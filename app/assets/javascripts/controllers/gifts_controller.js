@@ -1,0 +1,1 @@
+App.GiftsController = Em.ArrayController;
