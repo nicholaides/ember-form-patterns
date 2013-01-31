@@ -1,1 +1,3 @@
-App.Gift = Em.Object;
+App.Gift = DS.Model.extend({
+  name: DS.attr('string')
+});

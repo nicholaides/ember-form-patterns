@@ -1,1 +1,1 @@
-App.GiftsController = Em.ArrayController;
+App.GiftsController = Em.ArrayController.extend();
