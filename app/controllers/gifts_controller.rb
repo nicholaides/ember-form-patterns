@@ -6,4 +6,9 @@ class GiftsController < ApplicationController
   def create
     render json: { gift: Gift.create!(params[:gift]) }
   end
+
+  def destroy
+    Gift.find(params[:id]).destroy
+    render json: true
+  end
 end

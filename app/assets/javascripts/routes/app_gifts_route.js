@@ -1,5 +1,6 @@
-App.GiftsRoute = Ember.Route.extend({
-  renderTemplate: function(){
+App.AppGiftsRoute = Ember.Route.extend({
+
+  renderTemplate: function () {
     var newGiftController = this.controllerFor('newGift'),
         giftsController   = this.controllerFor('gifts');
 
@@ -11,7 +12,7 @@ App.GiftsRoute = Ember.Route.extend({
     newGiftController.set('collection', giftsController);
     newGiftController.reset()
 
-    this.render('new-gift', {
+    this.render('new_gift', {
       outlet: 'form',
       controller: newGiftController
     });
@@ -21,4 +22,5 @@ App.GiftsRoute = Ember.Route.extend({
       controller: giftsController
     });
   }
+
 });

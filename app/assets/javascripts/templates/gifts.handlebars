@@ -1,8 +1,17 @@
 <h4>Wishes</h4>
-<ul>
-  {{#each this}}
-    <li>
-      {{name}}
-    </li>
-  {{/each}}
-</ul>
+
+{{#if this.length}}
+  <ul>
+    {{#each this}}
+      <li>
+        {{name}}
+      </li>
+    {{/each}}
+  </ul>
+{{else}}
+  <p>Don't you want any gifts?</p>
+{{/if}}
+
+{{#if this.length}}
+  <button class="btn btn-danger" {{action sendToSanta}}>Send to Santa</button>
+{{/if}}

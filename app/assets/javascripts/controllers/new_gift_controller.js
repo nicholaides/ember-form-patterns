@@ -1,14 +1,16 @@
 App.NewGiftController = Em.ObjectController.extend({
   collection: null,
 
-  add: function () {
-    var gift = this.get('content');
-    gift.store.commit()
-    this.get('collection').addObject(gift);
-    this.reset();
+  reset: function () {
+    this.transaction = this.get('store').transaction();
+    var gift = this.transaction.createRecord(App.Gift);
+    this.set('content', gift);
   },
 
-  reset: function () {
-    this.set('content', App.Gift.createRecord())
+  add: function () {
+    var gift = this.get('content');
+    this.transaction.commit();
+    this.get('collection').addObject(gift);
+    this.reset();
   }
 });
