@@ -23,9 +23,9 @@
 
   <h4>Wishes</h4>
 
-  {{#if collection.length}}
+  {{#if gifts.length}}
     <ul>
-      {{#each collection}}
+      {{#each gifts}}
         <li>
           {{name}}
           <button class="btn btn-danger btn-mini" {{action deleteGift this}}>del</button>

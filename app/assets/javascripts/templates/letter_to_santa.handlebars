@@ -4,7 +4,7 @@
     <p>{{pitch}}</p>
     <p>{{ask}}:</p>
     <ul>
-      {{#each collection}}
+      {{#each gifts}}
         <li>
           {{name}}
         </li>
@@ -13,7 +13,7 @@
     <p>Sincerely,</p>
     <h4>{{yourName}}</h4>
   </div>
-  {{#if collection.length}}
+  {{#if gifts.length}}
     <button class="btn btn-danger" {{action sendToSanta}}>Send to Santa</button>
   {{/if}}
 </div>
