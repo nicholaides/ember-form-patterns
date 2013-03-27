@@ -1,16 +1,18 @@
 App.LetterController = Em.ObjectController.extend({
+  newGift:    null,
   collection: null,
+
   yourName:   'Timmy',
   pitch:      'I have really tried to be good this year.',
   ask:        'Please bring me',
 
   reset: function () {
     var gift = App.Gift.createRecord();
-    this.set('content', gift);
+    this.set('newGift', gift);
   },
 
   add: function () {
-    var gift = this.get('content');
+    var gift = this.get('newGift');
     this.get('collection').addObject(gift);
     gift.get('transaction').commit();
     this.reset();

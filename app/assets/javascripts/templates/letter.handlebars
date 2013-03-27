@@ -15,7 +15,7 @@
   <h5>Add an Item</h5>
 
   <label>Item Name</label>
-  {{view Ember.TextField valueBinding="name" placeholder="e.g., NERF gun"}}
+  {{view Ember.TextField valueBinding="newGift.name" placeholder="e.g., NERF gun"}}
 
   <div>
     <input type="button" value="Add" class="btn btn-primary" {{action add}}>
