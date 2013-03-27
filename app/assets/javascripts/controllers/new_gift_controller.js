@@ -11,15 +11,18 @@ App.NewGiftController = Em.ObjectController.extend({
 
   add: function () {
     var gift = this.get('content');
-    gift.get('transaction').commit();
     this.get('collection').addObject(gift);
+    gift.get('transaction').commit();
     this.reset();
   },
 
   deleteMe: function (deletable) {
     console.log(deletable);
+    transaction = this.get('store').transaction();
+    transaction.add(deletable);
     deletable.deleteRecord();
-    deletable.get('transaction').commit();
+    this.get('collection').removeObject(deletable);
+    transaction.commit();
   },
 
   deleteRecords: function () {

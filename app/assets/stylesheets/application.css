@@ -13,8 +13,11 @@
  *= require_tree .
  */
 
-.letter {
+.letter_holder {
   float: right;
+}
+
+.letter {
   border: 1px solid;
   padding: 1em;
   font-size: 1.2em;
@@ -23,4 +26,23 @@
   box-shadow: 2px 2px 3px#999;
   border-radius: 3px;
   background-color: #FFFEF5;
+  margin-bottom: 1em;
+}
+
+.wishes {
+  margin-top: 2em;
+}
+
+.wishes h4 {
+  margin-top: 1em;
+}
+
+.wishes li {
+  margin-bottom: 5px;
+  width: 10em;
+}
+
+
+.wishes li button {
+  margin-left: 1em;
 }

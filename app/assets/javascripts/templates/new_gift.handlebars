@@ -1,16 +1,21 @@
-<div class="letter">
-  <h4>Dear Santa,</h4>
-  <p>{{pitch}}</p>
-  <p>{{ask}}:</p>
-  <ul>
-    {{#each collection}}
-      <li>
-        {{name}}
-      </li>
-    {{/each}}
-  </ul>
-  <p>Sincerely,</p>
-  <h4>{{yourName}}</h4>
+<div class="letter_holder">
+  <div class="letter">
+    <h4>Dear Santa,</h4>
+    <p>{{pitch}}</p>
+    <p>{{ask}}:</p>
+    <ul>
+      {{#each collection}}
+        <li>
+          {{name}}
+        </li>
+      {{/each}}
+    </ul>
+    <p>Sincerely,</p>
+    <h4>{{yourName}}</h4>
+  </div>
+  {{#if collection.length}}
+    <button class="btn btn-danger" {{action sendToSanta}}>Send to Santa</button>
+  {{/if}}
 </div>
 
 <h4>Compose Your Letter</h4>
@@ -24,28 +29,28 @@
 <label>Your Name</label>
 {{view Ember.TextField valueBinding="yourName" placeholder="Enter your name"}}
 
-<h5>Add an Item</h5>
+<div class="wishes">
+  <h5>Add an Item</h5>
 
-<label>Item Name</label>
-{{view Ember.TextField valueBinding="name" placeholder="e.g., NERF gun"}}
+  <label>Item Name</label>
+  {{view Ember.TextField valueBinding="name" placeholder="e.g., NERF gun"}}
 
-<div>
-  <input type="button" value="Add" class="btn btn-primary" {{action add}}>
+  <div>
+    <input type="button" value="Add" class="btn btn-primary" {{action add}}>
+  </div>
+
+  <h4>Wishes</h4>
+
+  {{#if collection.length}}
+    <ul>
+      {{#each collection}}
+        <li>
+          {{name}}
+          <button class="btn btn-danger btn-mini" {{action deleteMe this}}>del</button>
+        </li>
+      {{/each}}
+    </ul>
+  {{else}}
+    <p>Don&apos;t you want any gifts?</p>
+  {{/if}}
 </div>
-
-<h4>Wishes</h4>
-
-{{#if collection.length}}
-  <ul>
-    {{#each collection}}
-      <li>
-        {{name}}
-        <button {{action deleteMe this}}>del</button>
-      </li>
-    {{/each}}
-  </ul>
-
-  <button class="btn btn-danger" {{action sendToSanta}}>Send to Santa</button>
-{{else}}
-  <p>Don&apos;t you want any gifts?</p>
-{{/if}}
