@@ -9,6 +9,6 @@ App.GiftsController = Em.ArrayController.extend({
 
   sendToSanta: function () {
     this.deleteRecords();
-    this.transitionTo('thank_you');
-  }
+    this.transitionToRoute('thank_you');
+  },
 });
