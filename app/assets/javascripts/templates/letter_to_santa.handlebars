@@ -4,11 +4,15 @@
     <p>{{pitch}}</p>
     <p>{{ask}}:</p>
     <ul>
-      {{#each gifts}}
-        <li>
-          {{name}}
-        </li>
-      {{/each}}
+      {{#if gifts.length}}
+        {{#each gifts}}
+          <li>
+            {{name}}
+          </li>
+        {{/each}}
+      {{else}}
+        <li>Nothing</li>
+      {{/if}}
     </ul>
     <p>Sincerely,</p>
     <h4>{{yourName}}</h4>
