@@ -6,3 +6,20 @@
 <div>
   <input type="button" value="Add" class="btn btn-primary" {{action add}}>
 </div>
+
+
+<h4>Wishes</h4>
+
+{{#if collection.length}}
+  <ul>
+    {{#each collection}}
+      <li>
+        {{name}}
+      </li>
+    {{/each}}
+  </ul>
+
+  <button class="btn btn-danger" {{action sendToSanta}}>Send to Santa</button>
+{{else}}
+  <p>Don&apos;t you want any gifts?</p>
+{{/if}}

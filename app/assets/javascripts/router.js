@@ -1,7 +1,5 @@
 App.Router.map(function() {
-  this.resource("app", { path: "/" }, function(){
-    this.route("gifts", { path: "/" });
-  });
+  this.route("new_gift", { path: "/" });
   this.route("thank_you");
 });
 

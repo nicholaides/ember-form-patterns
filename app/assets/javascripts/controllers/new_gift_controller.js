@@ -3,7 +3,7 @@ App.NewGiftController = Em.ObjectController.extend({
 
   reset: function () {
     this.transaction = this.get('store').transaction();
-    var gift = this.transaction.createRecord(App.Gift);
+    var gift         = this.transaction.createRecord(App.Gift);
     this.set('content', gift);
   },
 
@@ -12,5 +12,17 @@ App.NewGiftController = Em.ObjectController.extend({
     this.transaction.commit();
     this.get('collection').addObject(gift);
     this.reset();
+  },
+
+  deleteRecords: function () {
+    this.get('collection').forEach(function (gift) {
+      gift.deleteRecord();
+      gift.store.commit();
+    });
+  },
+
+  sendToSanta: function () {
+    this.deleteRecords();
+    this.transitionToRoute('thank_you');
   }
 });
