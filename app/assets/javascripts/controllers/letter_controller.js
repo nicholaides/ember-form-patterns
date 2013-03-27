@@ -16,19 +16,21 @@ App.LetterController = Em.ObjectController.extend({
     this.reset();
   },
 
-  deleteMe: function (deletable) {
+  deleteGift: function (gift) {
     transaction = this.get('store').transaction();
-    transaction.add(deletable);
-    deletable.deleteRecord();
-    this.get('collection').removeObject(deletable);
+    transaction.add(gift);
+    gift.deleteRecord();
     transaction.commit();
+    this.get('collection').removeObject(gift);
   },
 
   deleteRecords: function () {
+    transaction = this.get('store').transaction();
     this.get('collection').forEach(function (gift) {
+      transaction.add(gift);
       gift.deleteRecord();
-      gift.store.commit();
     });
+    transaction.commit();
   },
 
   sendToSanta: function () {
