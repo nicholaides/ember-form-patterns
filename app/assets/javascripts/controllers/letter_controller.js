@@ -1,8 +1,8 @@
-App.NewGiftController = Em.ObjectController.extend({
+App.LetterController = Em.ObjectController.extend({
   collection: null,
-  yourName: 'Timmy',
-  pitch: 'I have really tried to be good this year.',
-  ask: 'Please bring me',
+  yourName:   'Timmy',
+  pitch:      'I have really tried to be good this year.',
+  ask:        'Please bring me',
 
   reset: function () {
     var gift = App.Gift.createRecord();
@@ -17,7 +17,6 @@ App.NewGiftController = Em.ObjectController.extend({
   },
 
   deleteMe: function (deletable) {
-    console.log(deletable);
     transaction = this.get('store').transaction();
     transaction.add(deletable);
     deletable.deleteRecord();

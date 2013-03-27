@@ -1,5 +1,5 @@
 App.Router.map(function() {
-  this.route("new_gift", { path: "/" });
+  this.route("letter", { path: "/" });
   this.route("thank_you");
 });
 
