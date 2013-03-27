@@ -20,5 +20,17 @@ App.NewGiftController = Em.ObjectController.extend({
     console.log(deletable);
     deletable.deleteRecord();
     deletable.get('transaction').commit();
+  },
+
+  deleteRecords: function () {
+    this.get('collection').forEach(function (gift) {
+      gift.deleteRecord();
+      gift.store.commit();
+    });
+  },
+
+  sendToSanta: function () {
+    this.deleteRecords();
+    this.transitionToRoute('thank_you');
   }
 });
