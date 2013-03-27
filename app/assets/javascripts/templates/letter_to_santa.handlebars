@@ -1,0 +1,19 @@
+<div class="letter_holder">
+  <div class="letter">
+    <h4>Dear Santa,</h4>
+    <p>{{pitch}}</p>
+    <p>{{ask}}:</p>
+    <ul>
+      {{#each collection}}
+        <li>
+          {{name}}
+        </li>
+      {{/each}}
+    </ul>
+    <p>Sincerely,</p>
+    <h4>{{yourName}}</h4>
+  </div>
+  {{#if collection.length}}
+    <button class="btn btn-danger" {{action sendToSanta}}>Send to Santa</button>
+  {{/if}}
+</div>
