@@ -13,9 +13,11 @@ App.LetterController = Em.ObjectController.extend({
 
   add: function () {
     var gift = this.get('newGift');
-    this.get('gifts').addObject(gift);
-    gift.get('transaction').commit();
-    this.reset();
+    if (gift.get('name')) {
+      this.get('gifts').addObject(gift);
+      gift.get('transaction').commit();
+      this.reset();
+    }
   },
 
   deleteGift: function (gift) {
